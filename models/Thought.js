@@ -12,11 +12,7 @@ const thoughtSchema = new Schema(
       type: Date,
       default: Date.now,
     },
-    reactions: {
-      type: Number,
-      required: true,
-      default: () => Math.floor(Math.random() * (100 - 70 + 1) + 70),
-    },
+    reactions: [],
   },
   {
     toJSON: {
@@ -29,8 +25,8 @@ const thoughtSchema = new Schema(
 const reactionSchema = new Schema(
   {
     reactionId: {
-      type: ObjectId,
-      default: new ObjectId,
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
     },
     reactionBody: {
       type: String,
@@ -48,4 +44,4 @@ const reactionSchema = new Schema(
   },
 );
 
-module.exports = thoughtSchema;
+module.exports = { thoughtSchema, reactionSchema };
