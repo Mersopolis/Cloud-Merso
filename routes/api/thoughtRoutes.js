@@ -8,10 +8,7 @@ const {
 } = require('../../controllers/thoughtController');
 
 // /api/thoughts
-router.route('/thoughts').get(getAllThoughts).post(createThought);
-
-// /api/thoughts/:thoughtId
-router.route('thoughts/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
+router.route('/thoughts').get(getAllThoughts).get(getSingleThought).post(createThought).put(updateThought).delete(deleteThought);
 
 // /api/thoughts/:thoughtId/reactions
 router.route('/api/thoughts/:thoughtId/reactions').post(addReaction).delete(deleteReaction);

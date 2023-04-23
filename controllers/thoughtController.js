@@ -7,7 +7,8 @@ module.exports = {
       const thoughts = await Thought.find();
 
       return res.json(thoughts);
-    } catch (err) {
+    }
+    catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
@@ -24,7 +25,8 @@ module.exports = {
       }
 
       return res.json(thought);
-    } catch (err) {
+    }
+    catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
@@ -36,7 +38,8 @@ module.exports = {
       const thought = await Thought.create(req.body);
 
       return res.json({ thought, message: 'Thought successfully created' });
-    } catch (err) {
+    }
+    catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
@@ -46,7 +49,7 @@ module.exports = {
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
-        { _id: req.params.thoughtId },
+        { _id: req.body._id },
         { $set: req.body },
         { runValidators: true, new: true }
       );
@@ -56,7 +59,8 @@ module.exports = {
       }
 
       return res.json({ thought, message: 'Thought successfully updated' });
-    } catch (err) {
+    }
+    catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
@@ -76,7 +80,8 @@ module.exports = {
       }
 
       return res.json({ thought, message: 'Reaction successfully added' });
-    } catch (err) {
+    }
+    catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
@@ -98,7 +103,8 @@ module.exports = {
       }
 
       return res.json({ thought, message: 'Reaction successfully deleted' });
-    } catch (err) {
+    }
+    catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
@@ -107,14 +113,15 @@ module.exports = {
   // Delete a thought
   async deleteThought(req, res) {
     try {
-      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
+      const thought = await Thought.findOneAndDelete({ _id: req.body._id });
 
       if (!thought) {
         return res.status(404).json({ message: 'No thought with that ID' });
       }
 
       return res.json({ thought, message: 'Thought successfully deleted' });
-    } catch (err) {
+    }
+    catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
