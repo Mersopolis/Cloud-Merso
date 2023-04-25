@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 const thoughtSchema = require('./Thought');
 
 const validateEmail = (email) => {
@@ -25,8 +25,12 @@ const userSchema = new Schema(
         "Please fill a valid email address",
       ],
     },
-    thoughts: [thoughtSchema],
-    friends: [userSchema]
+    thoughts: {
+      type: [Schema.Types.thoughtSchema]
+    },
+    friends: {
+      type: [this]
+    }
   },
   {
     toJSON: {

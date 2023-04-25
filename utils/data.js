@@ -74,25 +74,25 @@ const names = [
   'Parker',
 ];
 
-const appDescriptions = [
-  'Decision Tracker',
-  'Find My Phone',
-  'Learn Piano',
-  'Starbase Defender',
-  'Tower Defense',
-  'Monopoly Money Manager',
-  'Movie trailers',
+const randomThoughts = [
+  'Do you track your decisions?',
+  "Can't find my phone",
+  'I want to learn piano',
+  'Help me defend my star base!',
+  'Help me defend my tower!',
+  'My manager paid me in Monopoly money',
+  'Movie trailers suck',
   'Hello world',
-  'Stupid Social Media App',
-  'Notes',
-  'Messages',
-  'Email',
-  'Compass',
-  'Firefox',
-  'Running app',
-  'Cooking app',
-  'Poker',
-  'Deliveries',
+  'Stupid Social Media Apps...',
+  'Notes are for the weak',
+  'I hate getting messages',
+  'Please stop sending me spam emails',
+  'My compass broke :(',
+  'Firefox is better than Chrome',
+  'Suggestions for a running app?',
+  'Suggestions for a cooking app?',
+  'Who wants to play poker?',
+  'Who stole my deliveries?',
 ];
 
 // Get a random item given an array
@@ -107,7 +107,7 @@ const getRandomThoughts = (int) => {
   const results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      thoughtText: getRandomArrItem(appDescriptions),
+      thoughtText: getRandomArrItem(randomThoughts),
     });
   }
   return results;

@@ -4,7 +4,7 @@ module.exports = {
   // Get all users
   async getAllUsers(req, res) {
     try {
-      const users = await User.findAll();
+      const users = await User.find();
 
       return res.json(users);
     }
