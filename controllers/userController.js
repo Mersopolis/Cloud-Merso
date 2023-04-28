@@ -49,7 +49,9 @@ module.exports = {
   // Update a user
   async updateUser(req, res) {
     try {
-      const user = await User.findOneAndUpdate({ _id: req.body._id });
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body });
 
       return res.json({ user, message: 'User successfully updated' });
     }
@@ -104,7 +106,7 @@ module.exports = {
   // Delete a user
   async deleteUser(req, res) {
     try {
-      const user = await User.findOneAndRemove({ _id: req.body._id });
+      const user = await User.findOneAndRemove({ _id: req.params.userId });
 
       if (!user) {
         return res.status(404).json({ message: 'No such user exists' })
