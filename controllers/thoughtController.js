@@ -38,7 +38,8 @@ module.exports = {
       const thought = await Thought.create(req.body);
       const thoughtUser =  await User.findOneAndUpdate(
         { _id: req.body.userId },
-        { $addToSet: { thoughts: thought } }
+        { $addToSet: { thoughts: thought } },
+        { runValidators: true, new: true }
       );
 
       return res.json({ thought, thoughtUser, message: 'Thought successfully created' });
@@ -59,7 +60,8 @@ module.exports = {
       );
       const thoughtUser =  await User.findOneAndUpdate(
         { _id: req.body.userId },
-        { $set: { thoughts: { _id: req.body.thoughtId } } }
+        { $set: { thoughts: { _id: req.body.thoughtId } } },
+        { runValidators: true, new: true }
       );
 
       if (!thought) {

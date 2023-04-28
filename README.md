@@ -4,7 +4,7 @@
 ![MIT License](https://img.shields.io/badge/license-MIT%20License-green)
 
 ## Description
-A Social Networking backend API
+A Social Networking Backend API
 
 ## Table of Contents
 - [Installation](#installation)
